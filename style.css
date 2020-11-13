@@ -1,0 +1,70 @@
+body {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+#timer {
+    margin-top: auto;
+    margin-bottom: auto;
+    border: 2px solid rgba(0, 0, 0, 0.35);
+    width: 800px;
+    height: 400px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#timer-inner {
+    font-family: sans-serif;
+    font-size: 5em;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 600px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(2, 74, 107, 0.75);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 3px solid rgba(122, 10, 10, 0.05);
+}
+#timer-value {
+    margin-right: 8px;
+}
+
+#btn {
+    font-family: sans-serif;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: rgba(29, 127, 173,0.35);
+    width: 300px;
+    color: rgba(0,0,0,0.65);
+    font-size: 3em;
+}
+#button-wrapper {
+    margin: auto;
+    margin-bottom: 0;
+    padding: 16px;
+}
+#timer-info {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+}
+#timer-type {
+    font-family: sans-serif;
+    font-size: 4em;
+    margin: auto;
+    color: rgba(0,0,0,0.85);
+}
+#timer-round-desc {
+    margin: auto;
+    font-family: sans-serif;
+    font-size: 2em;
+    color: rgba(0,0,0,0.85);
+}
+#timer-round {
+    font-size: 2em;
+    font-family: sans-serif;
+    margin: auto;
+    color: rgba(0,0,0,0.85);
+}

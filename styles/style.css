@@ -1,13 +1,23 @@
 body {
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
+    align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
 }
+/** Classes **/
+
+.text {
+    font-family: sans-serif;
+    color: rgba(0, 0, 0, 0.85);
+}
+.description {
+    font-size: 2em;
+}
+
+/** Ids **/
 #timer {
-    margin-top: auto;
-    margin-bottom: auto;
     border: 2px solid rgba(0, 0, 0, 0.35);
     width: 800px;
     height: 400px;
@@ -16,7 +26,6 @@ body {
     flex-direction: column;
 }
 #timer-inner {
-    font-family: sans-serif;
     font-size: 5em;
     color: rgba(0, 0, 0, 0.65);
     font-weight: 600px;
@@ -28,21 +37,22 @@ body {
     border-bottom: 3px solid rgba(122, 10, 10, 0.05);
 }
 #timer-value {
-    margin-right: 8px;
+    flex-grow: 0.05;
 }
 
-#btn {
-    font-family: sans-serif;
+#start-button {
     border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.15);
-    background: rgba(29, 127, 173,0.35);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(29, 127, 173, 0.35);
     width: 300px;
-    color: rgba(0,0,0,0.65);
+    color: rgba(0, 0, 0, 0.65);
     font-size: 3em;
 }
 #button-wrapper {
-    margin: auto;
-    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    align-items: flex-end;
     padding: 16px;
 }
 #timer-info {
@@ -51,20 +61,14 @@ body {
     padding: 16px;
 }
 #timer-type {
-    font-family: sans-serif;
     font-size: 4em;
-    margin: auto;
-    color: rgba(0,0,0,0.85);
+    justify-content: center;
+    display: flex;
+}
+#round-info {
+    display: flex;
+    justify-content: center;
 }
 #timer-round-desc {
-    margin: auto;
-    font-family: sans-serif;
-    font-size: 2em;
-    color: rgba(0,0,0,0.85);
-}
-#timer-round {
-    font-size: 2em;
-    font-family: sans-serif;
-    margin: auto;
-    color: rgba(0,0,0,0.85);
+    flex-grow: 0.02;
 }

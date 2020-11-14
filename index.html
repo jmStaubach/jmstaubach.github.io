@@ -1,37 +1,40 @@
 <html>
+    <!-- Version 1.0 by Joel Staubach  -->
     <html lang="en"></html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Timer App</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="timer.js"></script>
+        <link rel="stylesheet" href="styles/style.css">
+        <script src="js/timer.js"></script>
     </head>
     <body>
         <div id="timer">
             <div id="timer-inner">
-                <div id="timer-value"> 
+                <div id="timer-value" class="text"> 
                     60
                 </div>
-                <div id="timer-unit">
+                <div id="timer-unit" class="text">
                     Sekunden
                 </div>          
             </div>
 
             <div id="timer-info">
-                <div id="timer-type">
+                <div id="timer-type" class="text">
                     Nicht gestartet
                 </div>
-                <div id="timer-round-desc">
-                    Runde
-                </div>
-                <div id="timer-round">
-                    0
+                <div id="round-info">
+                    <div id="timer-round-desc" class="text description">
+                        Runde
+                    </div>
+                    <div id="timer-round" class="text description">
+                        0
+                    </div>                
                 </div>
             </div>
 
             <div id="button-wrapper">
-                <button id="btn">Starten</button>
+                <button id="start-button">Starten</button>
             </div>
 
         </div>

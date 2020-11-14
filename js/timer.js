@@ -1,41 +1,21 @@
+const VERSION = 1.0;
 class TimerType {
-
-    static PAUSE = "Pause";
     static TRAINING = "Training";
-    static WARMUP = "Warm up";
 }
-
-class Timer {
-
-    /**
-     * Creates a new Timer
-     * @param {TimerType} type The Type of the timer
-     * @param {Number} time The time in seconds 
-     */
-    constructor(type,time) {
-        this.type = type;
-        this.time = time;
-    }
-}
-const TIMERS = [
-    new Timer(TimerType.WARMUP,10),
-    new Timer(TimerType.TRAINING, 30),
-    new Timer(TimerType.TRAINING, 30),
-    new Timer(TimerType.TRAINING, 30),
-    new Timer(TimerType.TRAINING, 30),
-    new Timer(TimerType.TRAINING, 30),
-    new Timer(TimerType.TRAINING, 30),    
-    new Timer(TimerType.PAUSE, 60)
-];
-
-const BEEP_THRESHOLD = 4;
-const AUDIO_URL = "https://freesfx.co.uk/sound/16867_1461333019.mp3"
-const AUDIO_LOAD_BEEP_URL = "https://freesfx.co.uk/sound/16867_1461333019.mp3"
-let updater = null;
-
 document.addEventListener("DOMContentLoaded", function (event) {
-    updater = new TimerUpdater();
-    document.getElementById("btn").addEventListener("click", () => {
+    //Send request to get the json config file
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        let timers = JSON.parse(this.responseText);
+        //Start TimerUpdater
+        updater = new TimerUpdater(timers);
+      }
+    };
+    xhttp.open("GET", "../../timer/timer_configs/timers.json", true);
+    xhttp.send();
+
+    document.getElementById("start-button").addEventListener("click", () => {
         updater.startCycle();
 
     })
@@ -43,23 +23,32 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 class TimerUpdater {
 
-    constructor() {
-        this.sound = new Audio(AUDIO_URL);
-        this.louderBeep = new Audio(AUDIO_LOAD_BEEP_URL);
+    static BEEP_THRESHOLD = 4;
+    static DEEP_BEEP_URL = "../../timer/sounds/deep_beep.wav"
+    static HIGH_BEEP_URL = "../../timer/sounds/high_beep.wav"
+    /**
+     * Create the new Update which handles the beeps and the document updates.
+     */
+    constructor(timers) {
+        this.timers = timers;
+        this.sound = new Audio(TimerUpdater.DEEP_BEEP_URL);
+        this.louderBeep = new Audio(TimerUpdater.HIGH_BEEP_URL);
         this.timerValue = document.getElementById("timer-value");
         this.timerUnit = document.getElementById("timer-unit");
-        this.restartButton = document.getElementById("restart-button");
         this.timerType = document.getElementById("timer-type");
         this.trainingRoundCounter = document.getElementById("timer-round")
         this.currentCylce = 0;
+
+        //Set the initial value for the timer
+        this.timerValue.innerText = this.timers[0].time;
     }
 
     /**
-     * Starts a new Timer cycle
+     * Starts a new Timer cycle.
      */
     async startCycle() {
         const cycleNr = ++this.currentCylce;
-        for (const timeObj of TIMERS) {
+        for (const timeObj of this.timers) {
             let time = timeObj.time
             if(timeObj.type == TimerType.TRAINING) { 
                 this.trainingRoundCounter.innerText = parseInt(this.trainingRoundCounter.innerText) + 1;    
@@ -72,15 +61,17 @@ class TimerUpdater {
                 if (cycleNr !== this.currentCylce) {
                     return;
                 }
-                console.log(time)
                 //Play the sound below the threshold.
-                if (time <= BEEP_THRESHOLD) {
+                if (time <= TimerUpdater.BEEP_THRESHOLD) {
                     this.sound.play();
                 }
                 time--;
                 await this.sleep(1000);
             }
         }
+        this.timerValue.innerText = 0;
+        this.timerType.innerText = "Fertig";
+        this.louderBeep.play();
     }
 
     /**

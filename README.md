@@ -1,7 +1,7 @@
 # Timer App by Joel Staubach
 
 ## How to use the app:
-- Visit: [jmstaubach.github.io.](jmstaubach.github.io)
+- Visit: [jmstaubach.github.io.](https://jmstaubach.github.io)
 - Click the Start button and have the timers run down.
 - Currently there is no way to customize your own timer.
 ## Changelog

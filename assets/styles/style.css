@@ -27,6 +27,7 @@ body {
     overflow: hidden;
 }
 #timer-inner {
+    position: relative;
     font-size: 5em;
     color: rgba(0, 0, 0, 0.65);
     font-weight: 600px;
@@ -56,8 +57,8 @@ body {
 }
 
 @keyframes timer-animation {
-    from {transform: scaleX(1);}
-    to {transform: scaleX(0);}
+    from {transform: translateX(0);}
+    to {transform: translateX(-100%);}
 }
 
 #timer-value {

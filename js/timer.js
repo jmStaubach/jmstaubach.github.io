@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         updater = new TimerUpdater(timers);
       }
     };
-    xhttp.open("GET", "../../timer/timer_configs/timers.json", true);
+    xhttp.open("GET", "../model/timer_configs/timers.json", true);
     xhttp.send();
 
     document.getElementById("start-button").addEventListener("click", () => {
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 class TimerUpdater {
 
     static BEEP_THRESHOLD = 4;
-    static DEEP_BEEP_URL = "../../timer/sounds/deep_beep.wav"
-    static HIGH_BEEP_URL = "../../timer/sounds/high_beep.wav"
+    static DEEP_BEEP_URL = "../assets/sounds/deep_beep.wav"
+    static HIGH_BEEP_URL = "../assets/sounds/high_beep.wav"
     /**
      * Create the new Update which handles the beeps and the document updates.
      */

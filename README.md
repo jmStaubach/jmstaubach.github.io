@@ -11,16 +11,16 @@ This is the development branch. Here we can check what features we have built be
 ## Future Versions
 
 ### Version 1.1:
-[] Customizable JSONs.
-[] Loader for JSON configs.
-[x] Animation for timer cycle.
+- [] Customizable JSONs.
+- [] Loader for JSON configs.
+- [x] Animation for timer cycle.
 
 ### Version 1.2: 
-[] Smartphone View
+- [] Smartphone View
 
 ### Version 1.3: 
-[] Language support
-[] Error handling for wrong file loading.
+- [] Language support
+- [] Error handling for wrong file loading.
   
 ### Version 1.4: 
-[] Spotify connection for playing songs.
+- [] Spotify connection for playing songs.

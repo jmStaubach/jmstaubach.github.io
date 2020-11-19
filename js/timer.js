@@ -36,8 +36,9 @@ class TimerUpdater {
         this.timerValue = document.getElementById("timer-value");
         this.timerUnit = document.getElementById("timer-unit");
         this.timerType = document.getElementById("timer-type");
-        this.trainingRoundCounter = document.getElementById("timer-round")
-        this.currentCylce = 0;
+        this.trainingRoundCounter = document.getElementById("timer-round");
+        this.animation = document.getElementById("timer-background");
+        this.currentCycle = 0;
 
         //Set the initial value for the timer
         this.timerValue.innerText = this.timers[0].time;
@@ -47,18 +48,22 @@ class TimerUpdater {
      * Starts a new Timer cycle.
      */
     async startCycle() {
-        const cycleNr = ++this.currentCylce;
+        const cycleNr = ++this.currentCycle;
         for (const timeObj of this.timers) {
-            let time = timeObj.time
+            let time = timeObj.time;
             if(timeObj.type == TimerType.TRAINING) { 
                 this.trainingRoundCounter.innerText = parseInt(this.trainingRoundCounter.innerText) + 1;    
             }
             this.timerType.innerText = timeObj.type;
             this.louderBeep.play();
+            this.animation.style.animationDuration = time + 's';
+            this.animation.classList.remove('start-animation');
+            void this.animation.offsetWidth;
+            this.animation.classList.add('start-animation');
             while (time) {
                 this.timerValue.innerText = time;
                 //Stop the timer if a new cycle has been started.
-                if (cycleNr !== this.currentCylce) {
+                if (cycleNr !== this.currentCycle) {
                     return;
                 }
                 //Play the sound below the threshold.

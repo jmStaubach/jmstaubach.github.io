@@ -24,6 +24,7 @@ body {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 #timer-inner {
     font-size: 5em;
@@ -31,11 +32,34 @@ body {
     font-weight: 600px;
     display: flex;
     justify-content: center;
-    background-color: rgba(2, 74, 107, 0.75);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-radius: 8px 8px 0 0;
     border-bottom: 3px solid rgba(122, 10, 10, 0.05);
 }
+
+#timer-background {
+    position: absolute;
+    width: 800px;
+    height: 92px;
+    z-index: -1;
+    border-radius: 8px 8px 0 0;
+    background-color: rgba(2, 74, 107, 0.75);
+    will-change: transform;
+}
+
+#timer-background.start-animation {
+    border-radius: 8px 0 0 0;
+}
+
+.start-animation {
+    animation: timer-animation linear;
+    transform-origin:left;
+}
+
+@keyframes timer-animation {
+    from {transform: scaleX(1);}
+    to {transform: scaleX(0);}
+}
+
 #timer-value {
     flex-grow: 0.05;
 }
